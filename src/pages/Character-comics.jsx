@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Character = () => {
   const [data, setData] = useState();
@@ -28,22 +29,25 @@ const Character = () => {
         <span>Chargement...</span>
       ) : (
         <div className="container">
-          <h1>{data.name}</h1>
-          <div>{data.description}</div>
           <img
-            src={`${data.thumbnail.path}/standard_fantastic.${data.thumbnail.extension}`}
+            src={`${data.thumbnail.path}/portrait_uncanny.${data.thumbnail.extension}`}
             alt="comic-img"
           />
+          <h1>{data.name}</h1>
+          <div>{data.description}</div>
+
           {data.comics.map((comics, index) => {
             return (
               <div key={index}>
-                <h1>{comics.name}</h1>
-                <img
-                  src={`${comics.thumbnail.path}/standard_fantastic.${comics.thumbnail.extension}`}
-                  alt="comic-img"
-                />
-                <div>{comics.title}</div>
-                <div>{comics.description}</div>
+                <Link to={`/comic/${comics._id}`}>
+                  <h1>{comics.name}</h1>
+                  <img
+                    src={`${comics.thumbnail.path}/standard_fantastic.${comics.thumbnail.extension}`}
+                    alt="comic-img"
+                  />
+                  <div>{comics.title}</div>
+                  <div>{comics.description}</div>
+                </Link>
               </div>
             );
           })}

@@ -52,6 +52,29 @@ header img {
 
 .comics-display {
   display: flex;
-  flex-wrap: wrap;
   width: 250px;
+  border: greenyellow 2px solid;
+  align-items: center;
+  align-content: center;
+}
+.tab-comics {
+  display: flex;
+  width: 100%;
+  border: 2px red solid;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-between;
+  align-items: center;
+}
+
+.character-card {
+  border: greenyellow 2px solid;
+  width: 280px;
+}
+
+.display-card {
+  border: deeppink 2px solid;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
