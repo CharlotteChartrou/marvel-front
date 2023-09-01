@@ -21,7 +21,7 @@ const Signin = ({ handleToken }) => {
             event.preventDefault();
             try {
               const response = await axios.post(
-                "https://site--marvel-backend--pzlwvwf45nxz.code.run/",
+                "https://site--marvel-backend--pzlwvwf45nxz.code.run/signin",
                 {
                   username,
                   password,
