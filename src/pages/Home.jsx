@@ -1,11 +1,10 @@
-import characters from "../assets/img/groupe.webp";
+import gif from "../assets/img/giphy.gif";
 
 const Home = () => {
   return (
     <>
       <div className="container">
-        <div>Bienvenue dans l'univers Marvel ©</div>
-        <img src={characters} alt="characters-group" />
+        <img className="gif" src={gif} />
       </div>
     </>
   );

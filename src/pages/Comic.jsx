@@ -2,11 +2,10 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Comic = () => {
+const Comic = ({ handleFavorites }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { comicId } = useParams();
-  console.log(comicId);
 
   useEffect(() => {
     const fecthData = async () => {
@@ -15,8 +14,7 @@ const Comic = () => {
       );
 
       setData(response.data);
-      console.log(response.data.thumbnail);
-
+      console.log(response.data);
       setIsLoading(false);
     };
     fecthData();
@@ -34,6 +32,13 @@ const Comic = () => {
             src={`${data.thumbnail.path}/portrait_uncanny.${data.thumbnail.extension}`}
             alt="comic-img"
           />
+          <button
+            onClick={() => {
+              handleFavorites(data._id);
+            }}
+          >
+            Add to Favorites
+          </button>
         </div>
       )}
     </>

@@ -11,16 +11,39 @@ import Footer from "./components/Footer";
 import Comic from "./pages/Comic";
 import Character from "./pages/Character-comics";
 import Favorites from "./pages/Favorites";
+import Login from "./pages/Login";
+import Signin from "./pages/Signin";
 
 function App() {
   const [search, setSearch] = useState("");
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(Cookies.get("favorites") || null);
   const [skip, setSkip] = useState(0);
+  const [token, setToken] = useState(Cookies.get("token") || null);
+
+  const handleToken = (token) => {
+    if (token) {
+      Cookies.set("token", token, { expires: 15 });
+      setToken(token);
+    } else {
+      Cookies.remove("token");
+      setToken(null);
+    }
+  };
+
+  const handleFavorites = (favorites) => {
+    if (favorites) {
+      Cookies.set("favorites", favorites, { expires: 10 });
+      setFavorites(favorites);
+    } else {
+      Cookies.remove("favorites");
+      setFavorites(null);
+    }
+  };
 
   return (
     <>
       <Router>
-        <Header />
+        <Header token={token} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
@@ -45,9 +68,20 @@ function App() {
               />
             }
           />
-          <Route path="/comic/:comicId" element={<Comic />} />
+          <Route
+            path="/comic/:comicId"
+            element={<Comic handleFavorites={handleFavorites} />}
+          />
           <Route path="/comics/:characterId" element={<Character />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route
+            path="/favorites"
+            element={<Favorites favorites={favorites} />}
+          />
+          <Route path="/login" element={<Login handleToken={handleToken} />} />
+          <Route
+            path="/signin"
+            element={<Signin handleToken={handleToken} />}
+          />
         </Routes>
         <Footer />
       </Router>

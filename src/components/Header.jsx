@@ -2,7 +2,7 @@ import logo from "../assets/img/marvel.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ token }) => {
   const navigate = useNavigate();
   return (
     <>
@@ -10,9 +10,38 @@ const Header = () => {
         <div className="container">
           <nav>
             <img onClick={() => navigate("/")} src={logo} alt="logo-marvel" />
-            <Link to={"/characters"}>CHARACTERS</Link>
-            <Link to={"/comics"}>COMICS</Link>
-            <Link to={"/favorites"}>FAVORITES</Link>
+            <Link to={"/characters"} className="menu">
+              Characters
+            </Link>
+            <Link to={"/comics"} className="menu">
+              Comics
+            </Link>
+            <Link to={"/favorites"} className="menu">
+              Favorites
+            </Link>
+            {token ? (
+              <button
+                style={{
+                  backgroundColor: "red",
+                  color: "white",
+                  border: "none",
+                }}
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Sign out
+              </button>
+            ) : (
+              <div className="button-log">
+                <Link to="/login" className="butt-connect">
+                  Log in
+                </Link>
+                <Link to="/signin" className="butt-connect2">
+                  Sign in
+                </Link>
+              </div>
+            )}
           </nav>
         </div>
       </header>

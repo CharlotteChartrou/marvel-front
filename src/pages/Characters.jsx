@@ -29,44 +29,56 @@ const Characters = ({ search, setSearch, skip, setSkip }) => {
         <span>Chargement...</span>
       ) : (
         <div className="container">
-          <input
-            type="search"
-            placeholder="Rechercher un personnage"
-            value={search}
-            onChange={(event) => {
-              setSearch(event.target.value);
-            }}
-          />
-          {skip !== 0 && (
-            <button
-              onClick={() => {
-                setSkip(skip - data.limit);
-                navigate("/characters");
-              }}
-            >
-              Page précedente
-            </button>
-          )}
-          {skip < data.count - data.limit && (
-            <button
-              onClick={() => {
-                setSkip(skip + data.limit);
-                navigate("/characters");
-              }}
-            >
-              Page suivante
-            </button>
-          )}
+          <div className="header-search">
+            <div>
+              <input
+                type="search"
+                placeholder="Rechercher un personnage"
+                value={search}
+                onChange={(event) => {
+                  setSearch(event.target.value);
+                }}
+              />
+            </div>
+            <div className="pagination">
+              {skip !== 0 && (
+                <div>
+                  <button
+                    onClick={() => {
+                      setSkip(skip - data.limit);
+                      navigate("/characters");
+                    }}
+                  >
+                    Page précedente
+                  </button>
+                </div>
+              )}
+              {skip < data.count - data.limit && (
+                <div>
+                  <button
+                    onClick={() => {
+                      setSkip(skip + data.limit);
+                      navigate("/characters");
+                    }}
+                  >
+                    Page suivante
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
           <h1>CHARACTERS </h1>
           <div className="display-card">
             {data.results.map((characters, index) => {
               return (
                 <div key={index} className="character-card">
                   <Link to={`/comics/${characters._id}`}>
-                    <h2>{characters.name}</h2>
-                    <div>{characters.description}</div>
+                    <h2 className="character-name">{characters.name}</h2>
+                    <div className="character-description">
+                      {characters.description}
+                    </div>
                     <img
-                      src={`${characters.thumbnail.path}/portrait_uncanny.${characters.thumbnail.extension}`}
+                      src={`${characters.thumbnail.path}/portrait_incredible.${characters.thumbnail.extension}`}
                       alt="comic-img"
                     />
                   </Link>
