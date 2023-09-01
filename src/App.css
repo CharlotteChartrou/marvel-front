@@ -134,14 +134,13 @@ header img {
 nav {
   display: flex;
   flex-direction: row;
-  align-content: space-between;
   align-items: center;
 }
 
 .menu {
   letter-spacing: 4px;
   display: inline-block;
-  padding: 15px;
+  padding: 13px;
   text-decoration: none;
   color: white;
   text-transform: uppercase;
@@ -154,7 +153,8 @@ nav {
 
 .menu:hover,
 .butt-connect:hover,
-.butt-connect2:hover {
+.butt-connect2:hover,
+.butt-signout:hover {
   background: black;
   color: white;
   box-shadow: 0 0 5px white, 0 0 50px white, 0 0 200px white;
@@ -190,4 +190,21 @@ nav {
   text-transform: uppercase;
   border-bottom: 1px solid black;
   transition: 0.8s;
+}
+
+.butt-signout {
+  letter-spacing: 4px;
+  display: inline-block;
+  padding: 11px;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  border-bottom: 1px solid black;
+  transition: 0.8s;
+  border-radius: 30px;
+}
+
+.butt-signout:hover {
+  letter-spacing: 15px;
 }

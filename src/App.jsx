@@ -43,7 +43,7 @@ function App() {
   return (
     <>
       <Router>
-        <Header token={token} />
+        <Header token={token} handleToken={handleToken} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route

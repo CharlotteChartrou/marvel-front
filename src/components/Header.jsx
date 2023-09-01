@@ -2,7 +2,7 @@ import logo from "../assets/img/marvel.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Header = ({ token }) => {
+const Header = ({ token, handleToken }) => {
   const navigate = useNavigate();
   return (
     <>
@@ -21,12 +21,9 @@ const Header = ({ token }) => {
             </Link>
             {token ? (
               <button
-                style={{
-                  backgroundColor: "red",
-                  color: "white",
-                  border: "none",
-                }}
+                className="butt-signout"
                 onClick={() => {
+                  handleToken(null);
                   navigate("/");
                 }}
               >

@@ -26,7 +26,7 @@ const Comic = ({ handleFavorites }) => {
         <span>Chargement...</span>
       ) : (
         <div className="container">
-          ;<h1>{data.title}</h1>
+          <h1>{data.title}</h1>
           <div>{data.description}</div>
           <img
             src={`${data.thumbnail.path}/portrait_uncanny.${data.thumbnail.extension}`}

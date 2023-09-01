@@ -19,7 +19,7 @@ const Login = ({ handleToken }) => {
             event.preventDefault();
             try {
               const response = await axios.post(
-                "https://site--marvel-backend--pzlwvwf45nxz.code.run/signin",
+                "https://site--marvel-backend--pzlwvwf45nxz.code.run/login",
                 {
                   email,
                   password,
@@ -27,9 +27,7 @@ const Login = ({ handleToken }) => {
               );
 
               console.log(response.data);
-
               handleToken(response.data.token);
-
               navigate("/");
             } catch (error) {
               console.log(error.response.data);
