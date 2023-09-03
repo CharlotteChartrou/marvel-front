@@ -19,6 +19,8 @@ const Header = ({ token, handleToken }) => {
             <Link to={"/favorites"} className="menu">
               Favorites
             </Link>
+          
+          
             {token ? (
               <button
                 className="butt-signout"
@@ -39,7 +41,9 @@ const Header = ({ token, handleToken }) => {
                 </Link>
               </div>
             )}
+             <div className="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div>
           </nav>
+         
         </div>
       </header>
     </>
