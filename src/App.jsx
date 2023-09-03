@@ -17,7 +17,7 @@ import Signin from "./pages/Signin";
 function App() {
   const [search, setSearch] = useState("");
   const [favorites, setFavorites] = useState(Cookies.get("favorites") || null);
-  const [skip, setSkip] = useState(0);
+
   const [token, setToken] = useState(Cookies.get("token") || null);
 
   const handleToken = (token) => {
@@ -52,8 +52,7 @@ function App() {
               <Comics
                 search={search}
                 setSearch={setSearch}
-                skip={skip}
-                setSkip={setSkip}
+               
               />
             }
           />
@@ -63,8 +62,7 @@ function App() {
               <Characters
                 search={search}
                 setSearch={setSearch}
-                skip={skip}
-                setSkip={setSkip}
+               
               />
             }
           />

@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import backcharac from "../assets/img/back-charact.jpeg"
 
-const Characters = ({ search, setSearch, skip, setSkip }) => {
+const Characters = ({ search, setSearch}) => {
   const navigate = useNavigate();
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [skip, setSkip] = useState(0);
 
   useEffect(() => {
     const fecthData = async () => {

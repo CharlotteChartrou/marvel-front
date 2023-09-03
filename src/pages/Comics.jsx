@@ -3,10 +3,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Comics = ({ search, setSearch, skip, setSkip }) => {
+const Comics = ({ search, setSearch }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-
+  const [skip, setSkip] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
