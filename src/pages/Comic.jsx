@@ -28,10 +28,13 @@ console.log(token)
         <span>Chargement...</span>
       ) : (
         <div className="container">
+          <div className="bloc-comic-page">
+            <div className="bloc1">
           <img
             src={`${data.thumbnail.path}/portrait_uncanny.${data.thumbnail.extension}`}
             alt="comic-img"
-          /> 
+          /> </div>
+          <div className="bloc2">
           <h1 key={data._id}>{data.title}</h1>
           <div>{data.description}</div>
           <button 
@@ -42,7 +45,7 @@ console.log(token)
                 
               })} } >
             Add to Favorites
-          </button>
+          </button></div></div>
         </div>
       )}
     </>
