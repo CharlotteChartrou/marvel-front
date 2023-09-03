@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import backcharac from "../assets/img/back-charact.jpeg"
 
 const Characters = ({ search, setSearch, skip, setSkip }) => {
   const navigate = useNavigate();
@@ -23,6 +24,8 @@ const Characters = ({ search, setSearch, skip, setSkip }) => {
   }, [search, skip]);
   console.log(data);
 
+  
+
   return (
     <>
       {isLoading ? (
@@ -30,7 +33,7 @@ const Characters = ({ search, setSearch, skip, setSkip }) => {
       ) : (
         <div className="container">
           <div className="header-search">
-            <div>
+            
               <input
                 type="search"
                 placeholder="Rechercher un personnage"
@@ -38,11 +41,11 @@ const Characters = ({ search, setSearch, skip, setSkip }) => {
                 onChange={(event) => {
                   setSearch(event.target.value);
                 }}
-              />
-            </div>
+              /> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ee181e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+             </div>
             <div className="pagination">
-              {skip !== 0 && (
-                <div>
+              {skip !== 0 ? (
+                
                   <button
                     onClick={() => {
                       setSkip(skip - data.limit);
@@ -51,10 +54,14 @@ const Characters = ({ search, setSearch, skip, setSkip }) => {
                   >
                     Page précedente
                   </button>
-                </div>
-              )}
-              {skip < data.count - data.limit && (
-                <div>
+                
+              ) : (  <button disabled
+              
+              >
+                Page précedente
+              </button>)}
+              {skip < data.count - data.limit ? (
+                
                   <button
                     onClick={() => {
                       setSkip(skip + data.limit);
@@ -63,29 +70,69 @@ const Characters = ({ search, setSearch, skip, setSkip }) => {
                   >
                     Page suivante
                   </button>
-                </div>
-              )}
+                
+              ) :  ( <button disabled
+              
+            >
+              Page suivante
+            </button>)}
             </div>
-          </div>
-          <h1>CHARACTERS </h1>
-          <div className="display-card">
+         
+         <div >
+          <h1> CHARACTERS </h1></div>
+    <div className="characters">
             {data.results.map((characters, index) => {
               return (
-                <div key={index} className="character-card">
+                       <div  key={index} className="card">
                   <Link to={`/comics/${characters._id}`}>
                     <h2 className="character-name">{characters.name}</h2>
-                    <div className="character-description">
+                    <p className="character-description">
                       {characters.description}
-                    </div>
+                    </p>
                     <img
-                      src={`${characters.thumbnail.path}/portrait_incredible.${characters.thumbnail.extension}`}
+                      src={`${characters.thumbnail.path}/standard_fantastic.${characters.thumbnail.extension}`}
                       alt="comic-img"
                     />
+           
                   </Link>
-                </div>
+                    </div>
               );
-            })}{" "}
-          </div>
+            })}
+      </div>
+      <div className="pagination">
+              {skip !== 0 ? (
+                
+                  <button
+                    onClick={() => {
+                      setSkip(skip - data.limit);
+                      navigate("/characters");
+                    }}
+                  >
+                    Page précedente
+                  </button>
+                
+              ) : (  <button disabled
+              
+              >
+                Page précedente
+              </button>)}
+              {skip < data.count - data.limit ? (
+                
+                  <button
+                    onClick={() => {
+                      setSkip(skip + data.limit);
+                      navigate("/characters");
+                    }}
+                  >
+                    Page suivante
+                  </button>
+                
+              ) :  ( <button disabled
+              
+            >
+              Page suivante
+            </button>)}
+            </div>
         </div>
       )}
     </>

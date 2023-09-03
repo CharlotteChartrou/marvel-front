@@ -28,30 +28,34 @@ const Character = () => {
       {isLoading ? (
         <span>Chargement...</span>
       ) : (
-        <div className="container">
+        <div className="container"> 
+        <div className="bloc">
+    <div className="charac-page">
           <img
-            src={`${data.thumbnail.path}/portrait_uncanny.${data.thumbnail.extension}`}
+            src={`${data.thumbnail.path}/portrait_fantastic.${data.thumbnail.extension}`}
             alt="comic-img"
           />
           <h1>{data.name}</h1>
           <div>{data.description}</div>
+</div> 
 
+<div className="charac-comics">
           {data.comics.map((comics, index) => {
             return (
-              <div key={index}>
-                <Link to={`/comic/${comics._id}`}>
-                  <h1>{comics.name}</h1>
+              <div className="comics-box" key={index}>
+                 
+             <Link to={`/comic/${comics._id}`}>
                   <img
                     to={`/comic/${comics._id}`}
                     src={`${comics.thumbnail.path}/standard_fantastic.${comics.thumbnail.extension}`}
                     alt="comic-img"
                   />
-                  <div>{comics.title}</div>
-                  <div>{comics.description}</div>
-                </Link>
+              </Link>
               </div>
             );
-          })}
+          })}</div>
+          <div className="span"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19V6M5 12l7-7 7 7"/></svg> comics in which this character appaers <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v13M5 12l7 7 7-7"/></svg></div>
+          </div>
         </div>
       )}
     </>

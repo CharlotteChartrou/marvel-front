@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import background from "../assets/img/background.jpeg"
 
 const Signin = ({ handleToken }) => {
   const [email, setEmail] = useState("");
@@ -11,10 +12,11 @@ const Signin = ({ handleToken }) => {
 
   const navigate = useNavigate();
 
-  return (
-    <div className="container">
-      <div className="form">
-        <h2>S'inscrire</h2>
+  return (     
+  <div className="container">
+ 
+   
+        <div className="form-signin">
         <form
           className="signup"
           onSubmit={async (event) => {
@@ -37,7 +39,7 @@ const Signin = ({ handleToken }) => {
               console.log(error.message);
             }
           }}
-        >
+        >     <h2>S'inscrire</h2>
           <input
             placeholder="Nom d'utilisateur"
             type="text"
@@ -66,16 +68,19 @@ const Signin = ({ handleToken }) => {
                 setNewsLetter(!newsLetter);
               }}
             ></input>
-            <span className="news" style={{ color: "#666" }}>
+            <span style={{ fontSize:"12px"}} >
               S'inscrire à notre newsletter
             </span>
           </label>
 
-          <button type="submit">S'inscrire</button>
+          <button type="submit">S'inscrire</button>  <Link style={{color:"white", fontSize:"10px"}} to="/login">Tu as déjà un compte ? Connecte-toi !</Link>
         </form>
-        <Link to="/login">Tu as déjà un compte ? Connecte-toi !</Link>
+      
       </div>
-    </div>
+      </div>
+      
+  
+
   );
 };
 

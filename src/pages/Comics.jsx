@@ -30,15 +30,17 @@ const Comics = ({ search, setSearch, skip, setSkip }) => {
         <span>Chargement...</span>
       ) : (
         <div className="container">
-          <input
+          <div className="header-search">
+          <input 
             type="search"
             value={search}
             placeholder="Rechercher un comic"
             onChange={(event) => {
               setSearch(event.target.value);
             }}
-          />
-          {skip !== 0 && (
+          /><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ee181e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+          <div className="pagination">
+          {skip !== 0 ? (
             <button
               onClick={() => {
                 setSkip(skip - data.limit);
@@ -47,9 +49,13 @@ const Comics = ({ search, setSearch, skip, setSkip }) => {
             >
               Page précedente
             </button>
-          )}
+          ): (  <button disabled
+              
+            >
+              Page précedente
+            </button>)}
 
-          {skip < data.count - data.limit && (
+          {skip < data.count - data.limit ? (
             <button
               onClick={() => {
                 setSkip(skip + data.limit);
@@ -58,26 +64,58 @@ const Comics = ({ search, setSearch, skip, setSkip }) => {
             >
               Page suivante
             </button>
-          )}
+          )  : (<button disabled 
+          >
+            Page suivante
+          </button>)  }</div>
           <h1>COMICS</h1>
-          <div className="tab-comics">
+         <div className="display-comics">
             {data.results.map((comics, index) => {
               return (
-                <>
-                  <div key={index} className="comics-display">
-                    <Link to={`/comic/${comics._id}`}>
-                      <h2>{comics.title}</h2>
-                      <img
-                        src={`${comics.thumbnail.path}/standard_fantastic.${comics.thumbnail.extension}`}
+                <> <div className="tab-comics">
+                    <Link style={{textDecoration: "none"}} to={`/comic/${comics._id}`}>
+                     <div key={index} className="box">
+                     <img
+                        src={`${comics.thumbnail.path}/portrait_uncanny.${comics.thumbnail.extension}`}
                         alt="comic-img"
-                      />{" "}
-                      <div>{comics.description}</div>
-                    </Link>
-                  </div>
+                      />
+                      <div className="hidden">
+                       <h2 >{comics.title}</h2>
+                      <span>{comics.description}</span></div></div>
+                    </Link>    </div>
                 </>
               );
-            })}{" "}
-          </div>
+            })}
+      </div>
+      <div className="pagination">
+          {skip !== 0 ? (
+            <button
+              onClick={() => {
+                setSkip(skip - data.limit);
+                navigate("/comics");
+              }}
+            >
+              Page précedente
+            </button>
+          ): (  <button disabled
+              
+            >
+              Page précedente
+            </button>)}
+
+          {skip < data.count - data.limit ? (
+            <button
+              onClick={() => {
+                setSkip(skip + data.limit);
+                navigate("/comics");
+              }}
+            >
+              Page suivante
+            </button>
+          )  : (<button disabled 
+          >
+            Page suivante
+          </button>)  }</div>
         </div>
       )}
     </>

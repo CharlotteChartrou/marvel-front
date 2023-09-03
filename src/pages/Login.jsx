@@ -48,7 +48,7 @@ const Login = ({ handleToken }) => {
           ></input>
           <button type="submit">Se Connecter</button>
         </form>
-        <Link to="/signin">Pas encore de compte ? Inscris-toi !</Link>
+        <Link style={{color:"white", fontSize:"10px"}} to="/signin">Pas encore de compte ? Inscris-toi !</Link>
       </div>
     </div>
   );

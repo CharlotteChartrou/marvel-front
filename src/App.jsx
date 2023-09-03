@@ -70,7 +70,7 @@ function App() {
           />
           <Route
             path="/comic/:comicId"
-            element={<Comic handleFavorites={handleFavorites} />}
+            element={<Comic handleFavorites={handleFavorites} token={token} />}
           />
           <Route path="/comics/:characterId" element={<Character />} />
           <Route
