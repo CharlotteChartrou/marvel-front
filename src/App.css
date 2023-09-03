@@ -28,6 +28,7 @@ header .menu-icon {
 
 header nav {
   width: 100%;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -44,7 +45,7 @@ header img {
   
 }
 footer {
-  margin-top: 30px;
+  padding-top: 30px;
   height: 120px;
   padding: 5px;
   background-color: #ee181e;
@@ -57,6 +58,7 @@ footer > span {
   font-size: 20px;
   color: white;
   width: 100%;
+  
 }
 
 
@@ -518,7 +520,7 @@ margin-bottom: 30px;
 header {
   height: 70px;
 }
-header .butt-connect2, header .butt-connect {
+header .butt-connect2, header .butt-connect, header .butt-signout {
   width: 70px;
   font-size: 9px;
   padding: 5px;
@@ -541,9 +543,11 @@ header .menu-icon {
   height: 50px;
 }
 
-header .butt-connect2, header .butt-connect{
+header .butt-connect2, header .butt-connect, header .butt-signout{
  display: none;}
  header .menu-icon {
+  margin-left: 300px;
   opacity: 1;
  }
+
 }
